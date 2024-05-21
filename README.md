@@ -1,37 +1,14 @@
-# Analisador Léxico Java
+# Analisador Léxico & Sintático Java
 
-Este é um programa simples em Java que implementa um analisador léxico para uma linguagem de programação específica. Um analisador léxico é responsável por dividir o código fonte em uma sequência de tokens, que são os componentes básicos da linguagem.
+Este projeto é um exemplo simples de um analisador léxico e sintático implementado em Java para uma linguagem de programação específica. O analisador léxico divide o código-fonte em tokens, enquanto o analisador sintático verifica se a sequência de tokens segue a gramática da linguagem.
 
-## Como Funciona
+## Descrição do Analisador Léxico
 
-O programa lê um arquivo de código-fonte escrito em uma linguagem específica e identifica cada token presente no código. Os tokens podem incluir palavras-chave, identificadores, números, operadores, caracteres especiais, etc.
+O analisador léxico é responsável por ler o código-fonte e convertê-lo em uma sequência de tokens. Cada token representa uma unidade léxica da linguagem, como palavras-chave, identificadores, operadores, literais e caracteres especiais.
 
-## Uso
+### Exemplo de Código-Fonte
 
-1. Compile o programa Java utilizando o comando `javac`:
-
-    ```
-    javac Lexico.java Sintatico.java Token.java Main.java
-    ```
-
-2. Execute o programa passando o caminho para o arquivo de código-fonte como argumento:
-
-    ```
-    java Main caminho_para_arquivo
-    ```
-
-3. O programa analisará o arquivo de código-fonte e exibirá os tokens identificados no console.
-
-## Estrutura do Código
-
-- `Lexico.java`: Implementa o analisador léxico que lê o arquivo de código-fonte e gera os tokens.
-- `Sintatico.java`: Implementa o analisador sintático que verifica a estrutura gramatical do código com base nos tokens gerados pelo analisador léxico.
-- `Token.java`: Define a classe Token para representar os diferentes tipos de tokens.
-- `Main.java`: O ponto de entrada do programa.
-
-## Exemplo
-
-Suponha que temos um arquivo `codigo.txt` com o seguinte conteúdo:
+Considere o seguinte exemplo de código-fonte:
 
 ```java
 class Main {
@@ -44,7 +21,8 @@ class Main {
 }
 ```
 
-O programa analisará este arquivo e produzirá os seguintes TOKENS:
+Tokens Gerados
+O analisador léxico dividirá este código em tokens, tais como:
 
 - PALAVRA_RESERVADA: class
 - IDENTIFICADOR: Main
@@ -73,8 +51,25 @@ O programa analisará este arquivo e produzirá os seguintes TOKENS:
 - IDENTIFICADOR: x
 - OPERADOR_ARITMETICO: +
 - INTEIRO: 1
-- CARACTER_ESPECIAL: ;
+- CARACTER_ESPECIAL: }
 - CARACTER_ESPECIAL: }
 
-### Licença
+## Descrição do Analisador Sintático
+O analisador sintático recebe a sequência de tokens do analisador léxico e verifica se esta sequência está de acordo com as regras gramaticais da linguagem. Ele constrói uma árvore de análise (parse tree) que representa a estrutura sintática do código.
+
+## Estrutura da Gramática
+A gramática da linguagem pode incluir regras como:
+
+- Uma declaração de classe deve começar com a palavra-chave class, seguida por um identificador e um bloco de código delimitado por { e }.
+- Uma declaração de variável deve incluir um tipo (por exemplo, int, float, char), seguido por um identificador, um operador de atribuição =, e um valor literal.
+- Uma estrutura condicional if deve incluir a palavra-chave if, seguida por uma expressão entre parênteses ( e ), e um bloco de código delimitado por { e }.
+  
+## Estrutura do Projeto
+
+- *Lexico.java*: Implementa o analisador léxico que lê o arquivo de código-fonte e gera os tokens.
+- *Sintatico.java*: Implementa o analisador sintático que verifica a estrutura gramatical do código com base nos tokens gerados pelo analisador léxico.
+- *Token.java*: Define a classe Token para representar os diferentes tipos de tokens.
+- *Main.java*: O ponto de entrada do programa.
+
+## Licença
 Este projeto está licenciado sob a **MIT License**.
