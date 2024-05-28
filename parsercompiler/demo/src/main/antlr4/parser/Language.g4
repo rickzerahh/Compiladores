@@ -1,6 +1,6 @@
 grammar Language;
 
-start: classDefinition EOF;
+start: classDefinition EOF; // EOF (END OF A FILE) convenção usada pelo ANTLR para geração de analisadores léxicos e sintáticos
 
 classDefinition: 'class' Identifier '{' classBody '}';
 
@@ -31,6 +31,7 @@ labeledStatement:
 
 expressionStatement: expression? ';';
 
+// TODOS OS STATEMENTS
 selectionStatement:
 	'if' '(' expression ')' statement ('else' statement)?
 	| 'switch' '(' expression ')' statement;
@@ -46,12 +47,14 @@ jumpStatement:
 	| 'break' ';'
 	| 'return' expression? ';';
 
+//Declaração de uma variável com um tipo e um identificador dela
 declaration: typeSpecifier declaratorList?;
 
 declaratorList: declarator (',' declarator)*;
 
 declarator: pointer? directDeclarator;
 
+//Um ponteiro é um asteriscos opcionais seguidos por um modificador de tipo
 pointer: '*' ('*' | typeQualifier)*;
 
 typeQualifier: 'const' | 'volatile';
@@ -76,6 +79,7 @@ initializer:
 	| '{' initializerList '}'
 	| '{' initializerList ',' '}';
 
+// Especifica o tipo que pode ser um tipo básico, uma struct, uma union, um enum ou um typedef ...
 typeSpecifier:
 	'void'
 	| 'char'
@@ -98,11 +102,14 @@ structOrUnion: 'struct' | 'union';
 
 structDeclarationList: structDeclaration+;
 
+//Declaração em uma struct
 structDeclaration:
 	specifierQualifierList structDeclaratorList? ';';
 
+//uma lista de especificadores de um tipo
 specifierQualifierList: (typeSpecifier | typeQualifier)+;
 
+// uma lista de declaradores de struct
 structDeclaratorList: structDeclarator (',' structDeclarator)*;
 
 constantExpression: conditionalExpression;
@@ -111,6 +118,7 @@ structDeclarator:
 	declarator
 	| declarator? ':' constantExpression;
 
+//Especificação para um ENUM
 enumSpecifier:
 	'enum' Identifier? '{' enumeratorList? '}'
 	| 'enum' Identifier;
@@ -127,6 +135,7 @@ assignmentExpression:
 	conditionalExpression
 	| unaryExpression assignmentOperator assignmentExpression;
 
+// Operadores :
 assignmentOperator:
 	'='
 	| '*='
@@ -140,6 +149,7 @@ assignmentOperator:
 	| '^='
 	| '|=';
 
+// TODAS EXPRESSOES CONDICIONAIS
 conditionalExpression:
 	logicalOrExpression (
 		'?' expression ':' conditionalExpression
@@ -198,6 +208,7 @@ postfixExpression:
 	| postfixExpression '++'
 	| postfixExpression '--';
 
+// expressões primárias
 primaryExpression:
 	Identifier
 	| Constant
@@ -207,8 +218,7 @@ primaryExpression:
 argumentExpressionList:
 	assignmentExpression (',' assignmentExpression)*;
 
-typeName:
-	specifierQualifierList (abstractDeclarator | /* empty */)?;
+typeName: specifierQualifierList (abstractDeclarator | /* empty */)?;
 
 abstractDeclarator: pointer? directAbstractDeclarator?;
 
