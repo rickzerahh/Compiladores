@@ -1,0 +1,8 @@
+class {
+    int = 10;
+    float y = 20.5;
+    char z = 'a';
+    if (x < y) {
+      x = x + 1;
+    }
+}

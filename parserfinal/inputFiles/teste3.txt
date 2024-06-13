@@ -1,0 +1,23 @@
+START;
+INT x = 5;
+INT y = 10;
+INT resultado = 0;
+FLOAT pi = 3.14;
+STRING nome = "Maria";
+BOOL condicao = TRUE;
+
+WHILE(x <= y) {
+    resultado = resultado + x;
+    x = x + 1;
+}
+
+IF(condicao) {
+    OUTPUT "O resultado da soma é: ";
+    OUTPUT resultado;
+}
+ELSE {
+    OUTPUT "A condição não foi satisfeita.";
+}
+
+OUTPUT "\nFim do programa.";
+END;

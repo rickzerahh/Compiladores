@@ -1,0 +1,10 @@
+START;
+STRING mensagem = "Digite um número inteiro: ";
+STRING msgNumero = "Você digitou o número: ";
+INT numero;
+OUTPUT mensagem;
+INPUT numero;
+OUTPUT msgNumero;
+OUTPUT numero;
+OUTPUT "\n";
+END;

@@ -1,0 +1,16 @@
+START;
+INT x = 1;
+INT y = 3;
+INT a = 1 ;
+
+WHILE(x<=y){
+    a = a * x;
+    x = x + 1;
+
+}
+OUTPUT "O fatorial de ";
+OUTPUT y;
+OUTPUT "eh: ";
+OUTPUT a;
+OUTPUT "\n";
+END;
